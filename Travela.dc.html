@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travela — Split, Croatia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  html { background: #f7f6f3; }
+  body { margin: 0; background: #f7f6f3; color: #0c1a1f; font-family: Archivo, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  ::selection { background: #1794bb; color: #fff; }
+  a { color: #1794bb; text-decoration: none; }
+  a:hover { color: #2f8462; }
+  @keyframes tv-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+  @keyframes tv-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+  ::-webkit-scrollbar { width: 9px; }
+  ::-webkit-scrollbar-track { background: #f7f6f3; }
+  ::-webkit-scrollbar-thumb { background: #cfd6d3; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="120" fill="#1794bb"></rect>
+    <circle cx="60" cy="52" r="17" fill="#f7f6f3"></circle>
+    <rect x="36" y="82" width="48" height="6" rx="3" fill="#2f8462"></rect>
+  </svg>
+</template>
+
+<div style="background:#f7f6f3;color:#0c1a1f;min-height:100vh;position:relative">
+
+  <header data-tv-nav="" style="{{ navStyle }}">
+    <a href="#top" data-tv-navlink="" style="{{ wordmarkStyle }}">
+      <span style="color:#1794bb;font-size:15px">✳</span>Travela
+    </a>
+    <nav style="display:flex;align-items:center;gap:26px;flex-wrap:nowrap;white-space:nowrap">
+      <a href="#tours" data-tv-navlink="" style="{{ navLinkStyle }}">{{ t.navBoat }}</a>
+      <a href="#tours" data-tv-navlink="" style="{{ navLinkStyle }}">{{ t.navAdventure }}</a>
+      <a href="#about" data-tv-navlink="" style="{{ navLinkStyle }}">{{ t.navAbout }}</a>
+      <a href="#contact" data-tv-navlink="" style="{{ navLinkStyle }}">{{ t.navContact }}</a>
+      <div data-tv-langbar="" style="{{ langBarStyle }}">
+        <button type="button" onClick="{{ setEn }}" style="{{ itemEn }}">EN</button>
+        <button type="button" onClick="{{ setHr }}" style="{{ itemHr }}">HR</button>
+        <button type="button" onClick="{{ setEs }}" style="{{ itemEs }}">ES</button>
+        <button type="button" onClick="{{ setFr }}" style="{{ itemFr }}">FR</button>
+        <button type="button" onClick="{{ setDe }}" style="{{ itemDe }}">DE</button>
+      </div>
+      <a href="#contact" style="display:flex;align-items:center;gap:9px;background:#1794bb;color:#ffffff;padding:11px 18px;border-radius:999px;font-size:13px;font-weight:600" style-hover="background:#2f8462">{{ t.book }}<span style="width:6px;height:6px;background:#ffffff;display:block"></span></a>
+    </nav>
+  </header>
+
+  <section id="top" data-screen-label="Hero" style="position:relative;height:124vh;min-height:860px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div data-tv-heromedia="" style="position:absolute;inset:0">
+      <img src="uploads/photos-1786467766376-nuoz.jpg" alt="Modra špilja / Blue Cave, Biševo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <canvas data-tv-canvas="" style="position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.2s ease"></canvas>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,#06171d99 0%,#06171d1f 38%,#06171dcc 100%)"></div>
+    </div>
+
+    <div style="position:relative;width:100%;max-width:1180px;padding:0 32px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px;color:#ffffff;transform:translateY(-6vh)">
+      <h1 data-tv-hero-title="" style="margin:0;display:flex;flex-direction:column;align-items:center;font-size:clamp(52px,12vw,196px);line-height:.86;letter-spacing:-0.05em;font-weight:600;text-transform:uppercase;color:#ffffff">{{ t.heroTitle }}</h1>
+      <p data-tv-fade="" style="margin:0;max-width:46ch;font-size:clamp(16px,1.5vw,21px);line-height:1.4;font-weight:500;text-wrap:pretty;color:#ffffffe6">{{ t.heroLead }}</p>
+      <div data-tv-fade="" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;padding-top:6px">
+        <a href="#tours" style="display:flex;align-items:center;gap:12px;background:#ffffff;color:#0c1a1f;padding:17px 30px;border-radius:999px;font-size:14px;font-weight:600" style-hover="background:#1794bb;color:#ffffff">{{ t.book }}<span style="width:7px;height:7px;background:#1794bb;display:block"></span></a>
+        <a href="#contact" style="display:flex;align-items:center;gap:10px;border:1px solid #ffffff8a;color:#ffffff;padding:16px 24px;border-radius:999px;font-size:13px;font-weight:500;font-family:'IBM Plex Mono',monospace" style-hover="border-color:#8fd7ea;color:#8fd7ea">WhatsApp</a>
+      </div>
+    </div>
+    <span style="position:absolute;bottom:42px;left:50%;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.28em;color:#ffffffbb;animation:tv-bob 2.6s ease-in-out infinite">{{ t.scroll }}</span>
+  </section>
+
+  <div style="border-bottom:1px solid #e3e1da;overflow:hidden;background:#eef4f4">
+    <div style="display:flex;width:max-content;animation:tv-marquee 34s linear infinite;padding:13px 0">
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#4d6367;white-space:nowrap">
+        <span>Modra špilja</span><span style="color:#1794bb">✳</span><span>Hvar</span><span style="color:#2f8462">✳</span><span>Pakleni otoci</span><span style="color:#1794bb">✳</span><span>Marjan</span><span style="color:#2f8462">✳</span><span>Cetina</span><span style="color:#1794bb">✳</span><span>Vis &amp; Biševo</span><span style="color:#2f8462">✳</span><span>Zlatni rat</span><span style="color:#1794bb">✳</span><span>Krka</span><span style="color:#2f8462">✳</span>
+      </div>
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#4d6367;white-space:nowrap">
+        <span>Modra špilja</span><span style="color:#1794bb">✳</span><span>Hvar</span><span style="color:#2f8462">✳</span><span>Pakleni otoci</span><span style="color:#1794bb">✳</span><span>Marjan</span><span style="color:#2f8462">✳</span><span>Cetina</span><span style="color:#1794bb">✳</span><span>Vis &amp; Biševo</span><span style="color:#2f8462">✳</span><span>Zlatni rat</span><span style="color:#1794bb">✳</span><span>Krka</span><span style="color:#2f8462">✳</span>
+      </div>
+    </div>
+  </div>
+
+  <section data-screen-label="Categories" style="background:#f7f6f3;padding:104px 32px 96px">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;padding-bottom:48px">
+      <h2 data-tv-fade="" style="margin:0;font-size:clamp(32px,4.4vw,64px);line-height:1.04;letter-spacing:-0.035em;font-weight:600;max-width:20ch;text-wrap:balance;flex:1 1 520px">{{ t.catTitle }}</h2>
+      <p data-tv-fade="" style="margin:0;max-width:34ch;font-size:15px;line-height:1.5;color:#5d6f74">{{ t.catLead }}</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#f7f6f3;border-top:1px solid #e3e1da">
+      <article data-tv-cat="" style="background:#f7f6f3;padding:24px 22px 0;display:flex;flex-direction:column;gap:18px;box-shadow:1px 0 0 #e3e1da" style-hover="background:#eef4f4">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+          <h3 style="margin:0;font-size:17px;font-weight:600;letter-spacing:-0.01em">{{ t.cat1 }}</h3>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5d6f74">{{ t.cat1Meta }}</span>
+        </div>
+        <div style="aspect-ratio:4/3;overflow:hidden"><img src="uploads/photos-1786467766376-nuoz.jpg" alt="Modra špilja" style="width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1)" style-hover="transform:scale(1.06)"></div>
+      </article>
+      <article data-tv-cat="" style="background:#f7f6f3;padding:24px 22px 0;display:flex;flex-direction:column;gap:18px;box-shadow:1px 0 0 #e3e1da" style-hover="background:#eef4f4">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+          <h3 style="margin:0;font-size:17px;font-weight:600">{{ t.cat2 }}</h3>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5d6f74">{{ t.cat2Meta }}</span>
+        </div>
+        <div style="aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,#e4eeee 0 8px,#eef4f4 8px 16px)"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6f8489;letter-spacing:.08em">cetina canyon</span></div>
+      </article>
+      <article data-tv-cat="" style="background:#f7f6f3;padding:24px 22px 0;display:flex;flex-direction:column;gap:18px;box-shadow:1px 0 0 #e3e1da" style-hover="background:#eef4f4">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+          <h3 style="margin:0;font-size:17px;font-weight:600">{{ t.cat3 }}</h3>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5d6f74">{{ t.cat3Meta }}</span>
+        </div>
+        <div style="aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,#e6efe9 0 8px,#eff5f1 8px 16px)"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6f8489;letter-spacing:.08em">krka waterfalls</span></div>
+      </article>
+      <article data-tv-cat="" style="background:#f7f6f3;padding:24px 22px 0;display:flex;flex-direction:column;gap:18px;box-shadow:1px 0 0 #e3e1da" style-hover="background:#eef4f4">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+          <h3 style="margin:0;font-size:17px;font-weight:600">{{ t.cat4 }}</h3>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5d6f74">{{ t.cat4Meta }}</span>
+        </div>
+        <div style="aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,#e4eeee 0 8px,#eef4f4 8px 16px)"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6f8489;letter-spacing:.08em">dubrovnik old town</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="tours" data-screen-label="All tours" style="background:#f7f6f3;padding:120px 32px 128px">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;padding-bottom:34px">
+      <h2 data-tv-fade="" style="margin:0;font-size:clamp(36px,5.6vw,88px);line-height:.92;letter-spacing:-0.045em;font-weight:600">{{ t.tripsTitle }}</h2>
+      <p data-tv-fade="" style="margin:0;max-width:40ch;font-size:14px;line-height:1.5;color:#5d6f74">{{ t.tripsLead }}</p>
+    </div>
+    <div data-tv-fade="" style="display:flex;flex-wrap:wrap;gap:8px;padding-bottom:34px;border-bottom:1px solid #e3e1da">
+      <button type="button" onClick="{{ filterAll }}" style="{{ chipAll }}">{{ t.filterAll }}<span style="opacity:.55">{{ countAll }}</span></button>
+      <button type="button" onClick="{{ filterBoat }}" style="{{ chipBoat }}">{{ t.cat1 }}<span style="opacity:.55">4</span></button>
+      <button type="button" onClick="{{ filterAdventure }}" style="{{ chipAdventure }}">{{ t.cat2 }}<span style="opacity:.55">3</span></button>
+      <button type="button" onClick="{{ filterParks }}" style="{{ chipParks }}">{{ t.cat3 }}<span style="opacity:.55">3</span></button>
+      <button type="button" onClick="{{ filterCities }}" style="{{ chipCities }}">{{ t.cat4 }}<span style="opacity:.55">2</span></button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr;gap:0;border-bottom:1px solid #e3e1da">
+      <sc-for list="{{ tours }}" as="tour" hint-placeholder-count="4">
+        <a href="{{ tour.href }}" data-tv-trip="" style="background:#f7f6f3;padding:44px 0 44px;display:grid;grid-template-columns:minmax(320px,1fr) minmax(340px,1.15fr);gap:56px;align-items:stretch;min-height:400px;color:#0c1a1f;box-shadow:0 1px 0 #e3e1da;transition:background .35s ease" style-hover="background:#eef4f4">
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7d8f93">
+              <span style="color:#2f8462">{{ tour.catLabel }}</span><span>{{ tour.num }}</span>
+            </div>
+            <h3 style="margin:0;font-size:clamp(26px,3vw,44px);line-height:1.03;letter-spacing:-0.035em;font-weight:600;text-wrap:balance;max-width:26ch">{{ tour.title }}</h3>
+            <p style="margin:0;font-size:16px;color:#5d6f74">{{ t.from }} <strong style="color:#0c1a1f;font-weight:600;font-size:22px;letter-spacing:-0.02em">{{ tour.priceLabel }}</strong></p>
+            <div style="margin-top:auto;display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;flex-direction:column;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.5;color:#5d6f74;border-top:1px solid #e3e1da;padding-top:16px">
+                <span>{{ tour.route }}</span>
+                <span>{{ tour.duration }} · {{ tour.departure }}</span>
+                <span>{{ tour.meeting }}</span>
+              </div>
+              <span style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#ffffff;border:1px solid #e3e1da;color:#0c1a1f;padding:15px 22px;border-radius:999px;font-size:13.5px;font-weight:600;transition:background .3s ease,color .3s ease,border-color .3s ease" style-hover="background:#1794bb;border-color:#1794bb;color:#ffffff">{{ t.explore }}<span style="width:6px;height:6px;background:#1794bb;display:block"></span></span>
+            </div>
+          </div>
+          <div style="{{ tour.mediaStyle }}">
+            <sc-if value="{{ tour.noImg }}" hint-placeholder-val="{{ true }}">
+              <span style="padding:16px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6f8489">{{ tour.imgNote }}</span>
+            </sc-if>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="about" data-screen-label="About" style="background:#eef4f4;padding:112px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:52px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <p data-tv-fade="" style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#2f8462">{{ t.aboutEyebrow }}</p>
+      <h2 data-tv-fade="" style="margin:0;font-size:clamp(28px,3.4vw,52px);line-height:1.04;letter-spacing:-0.035em;font-weight:600;max-width:22ch;text-wrap:balance">{{ t.aboutTitle }}</h2>
+      <p data-tv-fade="" style="margin:0;max-width:48ch;font-size:16px;line-height:1.55;color:#4d6367">{{ t.aboutBody }}</p>
+    </div>
+    <div data-tv-fade="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1px;background:#d8e3e2;border:1px solid #d8e3e2">
+      <div style="background:#eef4f4;padding:24px 20px;display:flex;flex-direction:column;gap:8px"><span style="font-size:clamp(30px,3.4vw,46px);line-height:1;letter-spacing:-0.04em;font-weight:600;color:#1794bb">4</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5d6f74;letter-spacing:.06em">{{ t.stat1 }}</span></div>
+      <div style="background:#eef4f4;padding:24px 20px;display:flex;flex-direction:column;gap:8px"><span style="font-size:clamp(30px,3.4vw,46px);line-height:1;letter-spacing:-0.04em;font-weight:600;color:#1794bb">12</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5d6f74;letter-spacing:.06em">{{ t.stat2 }}</span></div>
+      <div style="background:#eef4f4;padding:24px 20px;display:flex;flex-direction:column;gap:8px"><span style="font-size:clamp(30px,3.4vw,46px);line-height:1;letter-spacing:-0.04em;font-weight:600;color:#2f8462">12 h</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5d6f74;letter-spacing:.06em">{{ t.stat3 }}</span></div>
+      <div style="background:#eef4f4;padding:24px 20px;display:flex;flex-direction:column;gap:8px"><span style="font-size:clamp(30px,3.4vw,46px);line-height:1;letter-spacing:-0.04em;font-weight:600;color:#2f8462">€27</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5d6f74;letter-spacing:.06em">{{ t.stat4 }}</span></div>
+    </div>
+  </section>
+
+  <section id="contact" data-screen-label="Booking" style="background:#f7f6f3;padding:104px 32px 40px">
+    <h2 data-tv-fade="" style="margin:0 0 36px;font-size:clamp(40px,9vw,158px);line-height:.88;letter-spacing:-0.05em;font-weight:600;text-wrap:balance">{{ t.ctaTitle }}</h2>
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:30px;border-top:1px solid #e3e1da;padding-top:30px">
+      <div style="display:flex;flex-direction:column;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#5d6f74;line-height:1.6">
+        <span style="color:#0c1a1f">Travela · Obala kneza Domagoja 7, 21000 Split</span>
+        <span>hello@travelacroatia.com · +385 21 000 000</span>
+        <span>{{ t.hours }}</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#contact" style="display:flex;align-items:center;gap:12px;background:#1794bb;color:#ffffff;padding:17px 30px;border-radius:999px;font-size:14px;font-weight:600" style-hover="background:#2f8462">{{ t.book }}<span style="width:7px;height:7px;background:#ffffff;display:block"></span></a>
+        <a href="#contact" style="display:flex;align-items:center;gap:10px;border:1px solid #c9d2cf;color:#0c1a1f;padding:16px 24px;border-radius:999px;font-size:13px;font-weight:500;font-family:'IBM Plex Mono',monospace" style-hover="border-color:#2f8462;color:#2f8462">WhatsApp</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding:40px 0 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#7d8f93;text-transform:uppercase">
+      <span>✳ Travela — Split, Hrvatska</span>
+      <span>{{ t.footerNote }}</span>
+    </div>
+  </section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;hr&quot;,&quot;es&quot;,&quot;fr&quot;,&quot;de&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;shader&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;subtle&quot;,&quot;marked&quot;],&quot;default&quot;:&quot;marked&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+const COPY = {
+  en: {
+    navBoat: 'Boat Tours', navAdventure: 'Adventure', navAbout: 'About', navContact: 'Contact',
+    filterAll: 'All tours', book: 'Book Now', explore: 'Explore trip', from: 'from', scroll: 'SCROLL',
+    heroEyebrow: 'Split · Croatia — day trips on the Adriatic',
+    heroTitle: 'Split Experience',
+    heroLead: 'Day trips from Split by boat, kayak and open water. Vetted skippers, small groups, no queues.',
+    catTitle: 'We run every departure ourselves. Pick your experience.',
+    catLead: 'Four categories along one coast — from half-day lagoon runs to full-day island and national park crossings.',
+    cat1: 'Boat Tours', cat1Meta: '/ 4 tours',
+    cat2: 'Adventure', cat2Meta: '/ 3 tours',
+    cat3: 'National Parks', cat3Meta: '/ 3 tours',
+    cat4: 'Cities', cat4Meta: '/ 2 tours',
+    tripsTitle: 'All tours',
+    tripsLead: 'Fixed departures from Obala kneza Domagoja, Split. Prices per person, skipper and fuel included.',
+    trip1: 'Blue Cave & 5 Islands from Split', trip1Time: 'Daily 08:30 — 18:00 (10 h)', trip1Guests: '12 guests · speedboat', trip1Rating: '4.9 · 2 140 reviews',
+    trip2: 'Hvar & Pakleni Island Day', trip2Time: 'Tue / Thu / Sat 09:00 — 19:00', trip2Guests: '10 guests · three swim stops', trip2Rating: '4.8 · 860 reviews',
+    trip3: 'Cetina Canyon Rafting', trip3Time: 'Daily 09:00 & 14:00 (5 h)', trip3Guests: '8 per raft · guide and gear', trip3Rating: '4.9 · 1 320 reviews',
+    trip4: 'Sea Kayak & Snorkel, Marjan Sunset', trip4Time: 'Daily 17:30 — 20:30 (3 h)', trip4Guests: '14 guests · beginners welcome', trip4Rating: '4.9 · 640 reviews',
+    aboutEyebrow: 'About us',
+    aboutTitle: 'A local office on the Split waterfront, not a booking screen.',
+    aboutBody: 'Travela has been sending travellers out of Split for years. We own the schedule, we know which skipper reads the wind, and we cancel rather than sail into a bad afternoon. Obala kneza Domagoja 7 — walk in, we are next to the ferry port.',
+    stat1: 'categories', stat2: 'day tours', stat3: 'longest tour', stat4: 'lowest price',
+    ctaTitle: 'Book your day.',
+    hours: 'Office open daily 08:00 — 21:00, Apr — Oct',
+    footerNote: 'Photography placeholders marked in mono'
+  },
+  hr: {
+    navBoat: 'Izleti brodom', navAdventure: 'Avantura', navAbout: 'O nama', navContact: 'Kontakt',
+    filterAll: 'Svi izleti', book: 'Rezerviraj', explore: 'Pogledaj izlet', from: 'od', scroll: 'SKROLAJ',
+    heroEyebrow: 'Split · Hrvatska — jednodnevni izleti na Jadranu',
+    heroTitle: 'Split Experience',
+    heroLead: 'Jednodnevni izleti iz Splita brodom, kajakom i na otvorenom moru. Provjereni skiperi, male grupe, bez redova.',
+    catTitle: 'Sve polaske vodimo sami. Odaberi svoje more.',
+    catLead: 'Četiri kategorije na jednoj obali — od poludnevnih izleta do cjelodnevnih obilazaka otoka i nacionalnih parkova.',
+    cat1: 'Izleti brodom', cat1Meta: '/ 4 izleta',
+    cat2: 'Avantura', cat2Meta: '/ 3 izleta',
+    cat3: 'Nacionalni parkovi', cat3Meta: '/ 3 izleta',
+    cat4: 'Gradovi', cat4Meta: '/ 2 izleta',
+    tripsTitle: 'Svi izleti',
+    tripsLead: 'Fiksni polasci s Obale kneza Domagoja u Splitu. Cijene po osobi, skiper i gorivo uključeni.',
+    trip1: 'Modra špilja i 5 otoka iz Splita', trip1Time: 'Svaki dan 08:30 — 18:00 (10 h)', trip1Guests: '12 gostiju · gliser', trip1Rating: '4,9 · 2 140 recenzija',
+    trip2: 'Hvar i Pakleni otoci', trip2Time: 'Uto / čet / sub 09:00 — 19:00', trip2Guests: '10 gostiju · tri kupanja', trip2Rating: '4,8 · 860 recenzija',
+    trip3: 'Rafting kanjonom Cetine', trip3Time: 'Svaki dan 09:00 i 14:00 (5 h)', trip3Guests: '8 po raftu · vodič i oprema', trip3Rating: '4,9 · 1 320 recenzija',
+    trip4: 'Morski kajak i ronjenje, zalazak na Marjanu', trip4Time: 'Svaki dan 17:30 — 20:30 (3 h)', trip4Guests: '14 gostiju · za početnike', trip4Rating: '4,9 · 640 recenzija',
+    aboutEyebrow: 'O nama',
+    aboutTitle: 'Lokalni ured na splitskoj rivi, a ne zaslon za rezervacije.',
+    aboutBody: 'Travela godinama vodi putnike iz Splita. Sami držimo raspored, znamo koji skiper čita vjetar i radije otkazujemo nego isplovljavamo u loše poslijepodne. Obala kneza Domagoja 7 — svratite, tu smo uz trajektnu luku.',
+    stat1: 'kategorije', stat2: 'izleta', stat3: 'najdulji izlet', stat4: 'od',
+    ctaTitle: 'Rezerviraj svoj dan.',
+    hours: 'Ured otvoren svaki dan 08:00 — 21:00, travanj — listopad',
+    footerNote: 'Mjesta za fotografije označena u mono pismu'
+  },
+  es: {
+    navBoat: 'Tours en barco', navAdventure: 'Aventura', navAbout: 'Nosotros', navContact: 'Contacto',
+    filterAll: 'Todas', book: 'Reservar', explore: 'Ver excursión', from: 'desde', scroll: 'DESLIZÁ',
+    heroEyebrow: 'Split · Croacia — excursiones de un día por el Adriático',
+    heroTitle: 'Split Experience',
+    heroLead: 'Excursiones de un día desde Split en barco, kayak y mar abierto. Patrones verificados, grupos chicos, sin filas.',
+    catTitle: 'Operamos cada salida nosotros mismos. Elegí tu agua.',
+    catLead: 'Cuatro categorías en una misma costa — de medio día por la laguna a jornadas completas entre islas y parques nacionales.',
+    cat1: 'Tours en barco', cat1Meta: '/ 4 excursiones',
+    cat2: 'Aventura', cat2Meta: '/ 3 excursiones',
+    cat3: 'Parques nacionales', cat3Meta: '/ 3 excursiones',
+    cat4: 'Ciudades', cat4Meta: '/ 2 excursiones',
+    tripsTitle: 'Todas las excursiones',
+    tripsLead: 'Salidas fijas desde Obala kneza Domagoja, Split. Precios por persona, patrón y combustible incluidos.',
+    trip1: 'Cueva Azul y 5 islas desde Split', trip1Time: 'Todos los días 08:30 — 18:00 (10 h)', trip1Guests: '12 pasajeros · lancha rápida', trip1Rating: '4,9 · 2 140 reseñas',
+    trip2: 'Hvar e islas Pakleni', trip2Time: 'Mar / jue / sáb 09:00 — 19:00', trip2Guests: '10 pasajeros · tres paradas de baño', trip2Rating: '4,8 · 860 reseñas',
+    trip3: 'Rafting en el cañón del Cetina', trip3Time: 'Todos los días 09:00 y 14:00 (5 h)', trip3Guests: '8 por balsa · guía y equipo', trip3Rating: '4,9 · 1 320 reseñas',
+    trip4: 'Kayak y snorkel, atardecer en Marjan', trip4Time: 'Todos los días 17:30 — 20:30 (3 h)', trip4Guests: '14 pasajeros · aptos principiantes', trip4Rating: '4,9 · 640 reseñas',
+    aboutEyebrow: 'Nosotros',
+    aboutTitle: 'Una oficina local en el paseo marítimo de Split, no una pantalla de reservas.',
+    aboutBody: 'Travela lleva años sacando viajeros de Split. Manejamos el calendario nosotros, sabemos qué patrón lee el viento y preferimos cancelar antes que salir a una mala tarde. Obala kneza Domagoja 7 — pasá a vernos, estamos al lado del puerto de ferris.',
+    stat1: 'categorías', stat2: 'excursiones', stat3: 'la más larga', stat4: 'desde',
+    ctaTitle: 'Reservá tu día.',
+    hours: 'Oficina abierta todos los días 08:00 — 21:00, abril — octubre',
+    footerNote: 'Espacios de fotografía señalados en mono'
+  },
+  fr: {
+    navBoat: 'Sorties en bateau', navAdventure: 'Aventure', navAbout: 'À propos', navContact: 'Contact',
+    filterAll: 'Toutes', book: 'Réserver', explore: 'Voir l’excursion', from: 'à partir de', scroll: 'DÉFILER',
+    heroEyebrow: 'Split · Croatie — excursions d’une journée en Adriatique',
+    heroTitle: 'Split Experience',
+    heroLead: 'Excursions à la journée au départ de Split, en bateau, en kayak et en pleine mer. Skippers vérifiés, petits groupes, sans file d’attente.',
+    catTitle: 'Nous assurons chaque départ nous-mêmes. Choisissez votre eau.',
+    catLead: 'Quatre catégories sur une même côte — de la demi-journée au lagon aux journées entières entre îles et parcs nationaux.',
+    cat1: 'Sorties en bateau', cat1Meta: '/ 4 excursions',
+    cat2: 'Aventure', cat2Meta: '/ 3 excursions',
+    cat3: 'Parcs nationaux', cat3Meta: '/ 3 excursions',
+    cat4: 'Villes', cat4Meta: '/ 2 excursions',
+    tripsTitle: 'Toutes les excursions',
+    tripsLead: 'Départs fixes depuis Obala kneza Domagoja, Split. Prix par personne, skipper et carburant compris.',
+    trip1: 'Grotte Bleue et 5 îles au départ de Split', trip1Time: 'Tous les jours 08:30 — 18:00 (10 h)', trip1Guests: '12 passagers · vedette rapide', trip1Rating: '4,9 · 2 140 avis',
+    trip2: 'Hvar et les îles Pakleni', trip2Time: 'Mar / jeu / sam 09:00 — 19:00', trip2Guests: '10 passagers · trois baignades', trip2Rating: '4,8 · 860 avis',
+    trip3: 'Rafting dans le canyon de la Cetina', trip3Time: 'Tous les jours 09:00 et 14:00 (5 h)', trip3Guests: '8 par raft · guide et matériel', trip3Rating: '4,9 · 1 320 avis',
+    trip4: 'Kayak de mer et snorkeling, coucher de soleil au Marjan', trip4Time: 'Tous les jours 17:30 — 20:30 (3 h)', trip4Guests: '14 passagers · débutants bienvenus', trip4Rating: '4,9 · 640 avis',
+    aboutEyebrow: 'À propos',
+    aboutTitle: 'Un bureau local sur le front de mer de Split, pas un écran de réservation.',
+    aboutBody: 'Travela fait partir des voyageurs de Split depuis des années. Nous tenons le calendrier, nous savons quel skipper lit le vent, et nous annulons plutôt que de sortir par mauvais temps. Obala kneza Domagoja 7 — passez nous voir, nous sommes à côté du port des ferries.',
+    stat1: 'catégories', stat2: 'excursions', stat3: 'la plus longue', stat4: 'à partir de',
+    ctaTitle: 'Réservez votre journée.',
+    hours: 'Bureau ouvert tous les jours 08:00 — 21:00, avril — octobre',
+    footerNote: 'Emplacements photo signalés en mono'
+  },
+  de: {
+    navBoat: 'Bootstouren', navAdventure: 'Abenteuer', navAbout: 'Über uns', navContact: 'Kontakt',
+    filterAll: 'Alle', book: 'Jetzt buchen', explore: 'Tour ansehen', from: 'ab', scroll: 'SCROLLEN',
+    heroEyebrow: 'Split · Kroatien — Tagesausflüge an der Adria',
+    heroTitle: 'Split Experience',
+    heroLead: 'Tagesausflüge ab Split mit Boot, Kajak und auf offener See. Geprüfte Skipper, kleine Gruppen, kein Anstehen.',
+    catTitle: 'Jede Abfahrt fahren wir selbst. Wählen Sie Ihr Wasser.',
+    catLead: 'Vier Kategorien an einer Küste — von der halbtägigen Lagunentour bis zu ganztägigen Insel- und Nationalpark-Touren.',
+    cat1: 'Bootstouren', cat1Meta: '/ 4 Touren',
+    cat2: 'Abenteuer', cat2Meta: '/ 3 Touren',
+    cat3: 'Nationalparks', cat3Meta: '/ 3 Touren',
+    cat4: 'Städte', cat4Meta: '/ 2 Touren',
+    tripsTitle: 'Alle Touren',
+    tripsLead: 'Feste Abfahrten an der Obala kneza Domagoja, Split. Preise pro Person, Skipper und Treibstoff inklusive.',
+    trip1: 'Blaue Grotte & 5 Inseln ab Split', trip1Time: 'Täglich 08:30 — 18:00 (10 Std.)', trip1Guests: '12 Gäste · Schnellboot', trip1Rating: '4,9 · 2 140 Bewertungen',
+    trip2: 'Hvar & Pakleni-Inseln', trip2Time: 'Di / Do / Sa 09:00 — 19:00', trip2Guests: '10 Gäste · drei Badestopps', trip2Rating: '4,8 · 860 Bewertungen',
+    trip3: 'Rafting im Cetina-Canyon', trip3Time: 'Täglich 09:00 und 14:00 (5 Std.)', trip3Guests: '8 pro Boot · Guide und Ausrüstung', trip3Rating: '4,9 · 1 320 Bewertungen',
+    trip4: 'Seekajak & Schnorcheln, Sonnenuntergang am Marjan', trip4Time: 'Täglich 17:30 — 20:30 (3 Std.)', trip4Guests: '14 Gäste · auch für Anfänger', trip4Rating: '4,9 · 640 Bewertungen',
+    aboutEyebrow: 'Über uns',
+    aboutTitle: 'Ein Büro an der Uferpromenade von Split, kein Buchungsbildschirm.',
+    aboutBody: 'Travela schickt seit Jahren Reisende von Split aufs Wasser. Wir bestimmen den Fahrplan selbst, wir wissen, welcher Skipper den Wind liest, und wir sagen lieber ab, als bei schlechtem Wetter auszulaufen. Obala kneza Domagoja 7 — kommen Sie vorbei, wir sind direkt am Fährhafen.',
+    stat1: 'Kategorien', stat2: 'Tagestouren', stat3: 'längste Tour', stat4: 'ab',
+    ctaTitle: 'Buchen Sie Ihren Tag.',
+    hours: 'Büro täglich 08:00 — 21:00 geöffnet, April — Oktober',
+    footerNote: 'Bildplatzhalter in Mono gekennzeichnet'
+  }
+};
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    let saved = null;
+    try { saved = localStorage.getItem('travela.lang'); } catch (e) {}
+    this.state = { lang: (COPY[saved] ? saved : (props.lang && COPY[props.lang] ? props.lang : 'en')), scrolled: false, tours: [], cat: 'all' };
+  }
+  setLang(code) {
+    try { localStorage.setItem('travela.lang', code); } catch (e) {}
+    this.setState({ lang: code }, () => {
+      document.documentElement.lang = code;
+      this.animateTitle(true, (COPY[code] || COPY.en).heroTitle);
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
+    });
+  }
+  componentDidMount() {
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.lang = this.state.lang;
+    this.onScrollState = () => {
+      const y = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      const on = y > 80;
+      if (on !== this.state.scrolled) this.setState({ scrolled: on });
+    };
+    window.addEventListener('scroll', this.onScrollState, { passive: true });
+    document.addEventListener('scroll', this.onScrollState, { passive: true, capture: true });
+    window.addEventListener('resize', this.onScrollState, { passive: true });
+    this.onScrollState();
+    this.initGsap();
+    if ((this.props.shader ?? true) && !this.reduced) this.initShader();
+    import('./tours-data.js').then(m => {
+      this.setState({ tours: m.TOURS.map((tr, i) => ({
+        id: tr.id, title: tr.title, catLabel: tr.catLabel, route: tr.route,
+        duration: tr.duration, departure: tr.departure,
+        priceLabel: '\u20ac' + tr.price,
+        num: String(i + 1).padStart(2, '0'),
+        cat: tr.cat,
+        meeting: tr.meeting,
+        noImg: !tr.img,
+        mediaStyle: 'position:relative;overflow:hidden;min-height:340px;display:flex;align-items:flex-end;justify-content:flex-start;background:' +
+          (tr.img ? "url('" + tr.img + "') center/cover no-repeat" : 'repeating-linear-gradient(135deg,#e4eeee 0 8px,#eef4f4 8px 16px)'),
+        imgNote: tr.imgNote || '',
+        href: 'Tour.dc.html#' + tr.id
+      })) }, () => { if (window.ScrollTrigger) { this.initReveals(); ScrollTrigger.refresh(); } });
+    }).catch(() => {});
+  }
+  componentWillUnmount() {
+    this.stopped = true;
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this.onResize) window.removeEventListener('resize', this.onResize);
+    if (this.onMove) window.removeEventListener('pointermove', this.onMove);
+    if (this.onScrollState) {
+      window.removeEventListener('scroll', this.onScrollState);
+      document.removeEventListener('scroll', this.onScrollState, true);
+      window.removeEventListener('resize', this.onScrollState);
+    }
+    if (this.renderer) this.renderer.dispose();
+    (this.tws || []).forEach(tw => { try { if (tw.scrollTrigger) tw.scrollTrigger.kill(); tw.kill && tw.kill(); } catch (e) {} });
+    this.tws = [];
+  }
+  animateTitle(quick, wordIn) {
+    const title = document.querySelector('[data-tv-hero-title]');
+    if (!title || !window.gsap || this.reduced) return;
+    const word = wordIn || (COPY[this.state.lang] || COPY.en).heroTitle;
+    title.textContent = '';
+    const chars = [];
+    word.split(/\s+/).filter(Boolean).forEach(w => {
+      const line = document.createElement('span');
+      line.style.display = 'block';
+      line.style.overflow = 'hidden';
+      [...w].forEach(ch => {
+        const s = document.createElement('span');
+        s.textContent = ch;
+        s.style.display = 'inline-block';
+        s.style.willChange = 'transform,opacity';
+        line.appendChild(s);
+        chars.push(s);
+      });
+      title.appendChild(line);
+    });
+    gsap.from(chars, { yPercent: 110, opacity: 0, duration: quick ? 0.8 : 1.15, ease: 'expo.out', stagger: 0.04, delay: quick ? 0 : 0.15 });
+  }
+  initReveals() {
+    if (!window.gsap || !window.ScrollTrigger || this.reduced) return;
+    const strong = (this.props.motion ?? 'marked') !== 'subtle';
+    this.tws = this.tws || [];
+    gsap.utils.toArray('[data-tv-fade]:not([data-tv-done]), [data-tv-cat]:not([data-tv-done]), [data-tv-trip]:not([data-tv-done])').forEach((el, i) => {
+      el.setAttribute('data-tv-done', '');
+      const big = el.hasAttribute('data-tv-cat') || el.hasAttribute('data-tv-trip');
+      this.tws.push(gsap.fromTo(el,
+        { y: big ? (strong ? 44 : 18) : 26, opacity: 0 },
+        { y: 0, opacity: 1, duration: big ? 1 : 0.9, ease: 'power3.out', delay: big ? (i % 4) * 0.05 : 0,
+          immediateRender: false, clearProps: 'transform,opacity',
+          scrollTrigger: { trigger: el, start: 'top 94%', once: true } }));
+    });
+  }
+  initGsap() {
+    if (!window.gsap || !window.ScrollTrigger) { setTimeout(() => this.initGsap(), 200); return; }
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('[data-tv-done]').forEach(el => el.removeAttribute('data-tv-done'));
+    const strong = (this.props.motion ?? 'marked') !== 'subtle';
+    this.animateTitle(false);
+    if (this.reduced) return;
+    this.initReveals();
+    const media = document.querySelector('[data-tv-heromedia]');
+    if (media && strong) {
+      this.tws.push(gsap.to(media, { yPercent: 14, scale: 1.12, ease: 'none', scrollTrigger: { trigger: media.parentElement, start: 'top top', end: 'bottom top', scrub: true } }));
+    }
+    ScrollTrigger.refresh();
+  }
+  setCat(cat) {
+    this.setState({ cat }, () => {
+      document.querySelectorAll('[data-tv-trip]').forEach(el => { el.removeAttribute('data-tv-done'); el.style.opacity = '1'; el.style.transform = 'none'; });
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
+    });
+  }
+  chip(cat) {
+    const active = this.state.cat === cat;
+    return 'appearance:none;cursor:pointer;display:flex;align-items:center;gap:9px;white-space:nowrap;' +
+      'font-size:13px;font-weight:500;padding:11px 18px;border-radius:999px;transition:background .25s ease,color .25s ease,border-color .25s ease;' +
+      'border:1px solid ' + (active ? '#1794bb' : '#d5dcda') + ';background:' + (active ? '#1794bb' : 'transparent') + ';color:' + (active ? '#ffffff' : '#0c1a1f');
+  }
+  langItem(code) {
+    const active = this.state.lang === code;
+    const idle = this.state.scrolled ? '#5d6f74' : '#ffffffcc';
+    return 'appearance:none;border:0;cursor:pointer;white-space:nowrap;font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;letter-spacing:.08em;padding:5px 8px;border-radius:999px;transition:background .25s ease,color .25s ease;background:' +
+      (active ? '#1794bb' : 'transparent') + ';color:' + (active ? '#ffffff' : idle);
+  }
+  renderVals() {
+    const t = COPY[this.state.lang] || COPY.en;
+    return {
+      t,
+      tours: this.state.cat === 'all' ? this.state.tours : this.state.tours.filter(x => x.cat === this.state.cat),
+      countAll: String(this.state.tours.length || 12),
+      filterAll: () => this.setCat('all'), filterBoat: () => this.setCat('boat'),
+      filterAdventure: () => this.setCat('adventure'), filterParks: () => this.setCat('parks'),
+      filterCities: () => this.setCat('cities'),
+      chipAll: this.chip('all'), chipBoat: this.chip('boat'), chipAdventure: this.chip('adventure'),
+      chipParks: this.chip('parks'), chipCities: this.chip('cities'),
+      setEn: () => this.setLang('en'), setHr: () => this.setLang('hr'), setEs: () => this.setLang('es'),
+      setFr: () => this.setLang('fr'), setDe: () => this.setLang('de'),
+      navStyle: 'position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 32px;backdrop-filter:blur(14px);transition:background .45s ease,border-color .45s ease;border-bottom:1px solid ' +
+        (this.state.scrolled ? '#e3e1da' : 'transparent') + ';background:' + (this.state.scrolled ? '#f7f6f3f2' : 'linear-gradient(#0c1a1f66,#0c1a1f00)'),
+      navLinkStyle: 'font-size:13px;font-weight:500;letter-spacing:.01em;transition:color .45s ease;color:' + (this.state.scrolled ? '#0c1a1f' : '#ffffff'),
+      wordmarkStyle: 'display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-0.02em;white-space:nowrap;transition:color .45s ease;color:' + (this.state.scrolled ? '#0c1a1f' : '#ffffff'),
+      langBarStyle: 'display:flex;align-items:center;gap:2px;border-radius:999px;padding:3px;transition:border-color .45s ease;border:1px solid ' + (this.state.scrolled ? '#c9d2cf' : '#ffffff59'),
+      itemEn: this.langItem('en'), itemHr: this.langItem('hr'), itemEs: this.langItem('es'),
+      itemFr: this.langItem('fr'), itemDe: this.langItem('de')
+    };
+  }
+  initShader() {
+    if (!window.THREE) { setTimeout(() => this.initShader(), 250); return; }
+    const canvas = document.querySelector('[data-tv-canvas]');
+    if (!canvas) return;
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+    this.renderer = renderer;
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0, 1);
+    new THREE.TextureLoader().load('uploads/photos-1786467766376-nuoz.jpg', tex => {
+      tex.minFilter = THREE.LinearFilter;
+      const uni = {
+        uTex: { value: tex }, uTime: { value: 0 },
+        uRes: { value: new THREE.Vector2(1, 1) },
+        uImg: { value: new THREE.Vector2(tex.image.width, tex.image.height) },
+        uMouse: { value: new THREE.Vector2(0.5, 0.5) }
+      };
+      const mat = new THREE.ShaderMaterial({
+        uniforms: uni,
+        vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy*2.0,0.0,1.0); }',
+        fragmentShader: [
+          'precision highp float;',
+          'varying vec2 vUv; uniform sampler2D uTex; uniform float uTime;',
+          'uniform vec2 uRes; uniform vec2 uImg; uniform vec2 uMouse;',
+          'vec2 cover(vec2 uv){ float ar = uRes.x/uRes.y; float ir = uImg.x/uImg.y;',
+          '  vec2 s = ar > ir ? vec2(1.0, ir/ar) : vec2(ar/ir, 1.0);',
+          '  return (uv - 0.5)/s + 0.5; }',
+          'void main(){ vec2 uv = cover(vUv); float t = uTime;',
+          '  float w = sin((uv.y*11.0) + t*0.55)*0.0035 + sin((uv.x*17.0) - t*0.4)*0.0028;',
+          '  float caus = sin(uv.x*38.0 + t*0.9)*sin(uv.y*31.0 - t*0.7);',
+          '  vec2 d = vec2(w + caus*0.0016, w*0.7);',
+          '  float m = distance(vUv, uMouse);',
+          '  d += normalize(vUv - uMouse + 0.0001) * (0.006 * exp(-m*7.0)) * sin(t*1.6);',
+          '  vec3 col;',
+          '  col.r = texture2D(uTex, uv + d*1.06).r;',
+          '  col.g = texture2D(uTex, uv + d).g;',
+          '  col.b = texture2D(uTex, uv + d*0.94).b;',
+          '  col += vec3(0.06,0.10,0.13) * max(caus,0.0) * 0.55;',
+          '  float v = smoothstep(1.15, 0.25, distance(vUv, vec2(0.5)));',
+          '  col *= mix(0.78, 1.05, v);',
+          '  gl_FragColor = vec4(col, 1.0); }'
+        ].join('\n')
+      });
+      scene.add(new THREE.Mesh(new THREE.PlaneGeometry(1, 1), mat));
+      const resize = () => {
+        const r = canvas.getBoundingClientRect();
+        renderer.setSize(r.width, r.height, false);
+        uni.uRes.value.set(r.width, r.height);
+      };
+      resize();
+      this.onResize = resize;
+      window.addEventListener('resize', resize);
+      this.onMove = e => { this.tx = e.clientX / window.innerWidth; this.ty = 1 - e.clientY / window.innerHeight; };
+      window.addEventListener('pointermove', this.onMove);
+      canvas.style.opacity = '1';
+      const clock = new THREE.Clock();
+      const loop = () => {
+        if (this.stopped) return;
+        uni.uTime.value = clock.getElapsedTime();
+        if (this.tx !== undefined) {
+          uni.uMouse.value.x += (this.tx - uni.uMouse.value.x) * 0.05;
+          uni.uMouse.value.y += (this.ty - uni.uMouse.value.y) * 0.05;
+        }
+        renderer.render(scene, camera);
+        this.raf = requestAnimationFrame(loop);
+      };
+      loop();
+    });
+  }
+}
+
+</script>
+</body>
+</html>
