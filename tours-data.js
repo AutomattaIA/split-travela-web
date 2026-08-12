@@ -21,7 +21,7 @@ export const TOURS = [
     itinerary: ['Split, Riva Promenade (Stand 5) — departure', 'Blue Cave, Biševo Island', 'Surprise Destination', 'Stiniva Bay', 'Blue Lagoon (near Budikovac Island)', 'Pakleni Islands', 'Hvar', 'Return to Split, Riva Promenade']
   },
   {
-    imgNote: 'zlatni rat / hvar',
+    img: 'uploads/zlatni-rat-bol.jpg',
     id: 'bol-hvar-pakleni', cat: 'boat', catLabel: 'Boat Tours',
     title: 'Bol, Hvar and Pakleni Islands Tour',
     price: 125, duration: '10 h', departure: '08:30',
@@ -33,7 +33,7 @@ export const TOURS = [
     itinerary: ['08:30 — Departure from Riva Promenade, Stand 5', '09:30–11:30 — Bol (Zlatni Rat beach)', '12:30–14:30 — Hvar', '14:50–16:50 — Pakleni Islands', '17:20–18:00 — Stomorska', '18:30 — Return to Split']
   },
   {
-    imgNote: 'blue lagoon speedboat',
+    img: 'uploads/blue-lagoon-adriatic.jpg',
     id: 'half-day-blue-lagoon', cat: 'boat', catLabel: 'Boat Tours',
     title: 'Half Day Blue Lagoon Tour',
     price: 70, duration: '4.5 h', departure: '09:15 / 14:15',
@@ -45,7 +45,7 @@ export const TOURS = [
     itinerary: ['Departure from Split (09:15 / 14:15)', 'Trogir — free time for coffee (10:00–11:00 / 15:00–16:00)', 'Blue Lagoon — swimming and snorkelling (11:20–12:00 / 16:20–17:20)', 'Maslinica — coastal village (12:30–13:30 / 17:30–18:30)', 'Return to Split (14:00 / 19:00)']
   },
   {
-    imgNote: 'duga bay / shipwreck',
+    img: 'uploads/necujam-solta-bay.jpg',
     id: 'blue-lagoon-duga-shipwreck', cat: 'boat', catLabel: 'Boat Tours',
     title: 'Blue Lagoon, Duga Bay & Shipwreck',
     price: 60, duration: '8 h', departure: '09:30',
@@ -57,7 +57,7 @@ export const TOURS = [
     itinerary: ['09:30 — Meeting point at Riva', '10:00 — Boat departure', '11:30 — Duga Bay (Čiovo Island)', '12:00 — Lunch', '13:30 — Departure for Blue Lagoon', '14:15 — Blue Lagoon', '15:30–16:15 — Nečujam (Shipwreck) — snorkelling', '17:00 — Return to Split']
   },
   {
-    imgNote: 'cetina rafting',
+    img: 'uploads/cetina-rafting.jpg',
     id: 'rafting-cetina', cat: 'adventure', catLabel: 'Adventure',
     title: 'Rafting (Cetina River)',
     price: 65, duration: '5 h', departure: '07:40 / 13:40',
@@ -70,7 +70,7 @@ export const TOURS = [
     itinerary: []
   },
   {
-    imgNote: 'cetina canyon',
+    img: 'uploads/cetina-canyon-canyoning.jpg',
     id: 'canyoning', cat: 'adventure', catLabel: 'Adventure',
     title: 'Canyoning',
     price: 65, duration: '5 h', departure: '07:40 / 13:40',
@@ -83,7 +83,7 @@ export const TOURS = [
     itinerary: []
   },
   {
-    imgNote: 'zipline omiš',
+    img: 'uploads/cetina-canyon-omis-zipline.jpg',
     id: 'zip-line', cat: 'adventure', catLabel: 'Adventure',
     title: 'Zip Line with transfer from Split',
     price: 100, duration: '5 h', departure: 'On request',
@@ -96,7 +96,7 @@ export const TOURS = [
     itinerary: []
   },
   {
-    imgNote: 'skradinski buk',
+    img: 'uploads/krka-skradinski-buk.jpg',
     id: 'krka-waterfalls', cat: 'parks', catLabel: 'National Parks',
     title: 'Krka Waterfalls',
     price: 27, duration: '8 h', departure: '08:40',
@@ -108,7 +108,7 @@ export const TOURS = [
     itinerary: ['09:00 — Departure from Split', '10:30–12:30 — Krka National Park (Skradinski Buk)', '12:30–13:00 — Boat ride to Skradin', '13:00–15:45 — Free time in Skradin', '16:00–17:15 — Return to Split']
   },
   {
-    imgNote: 'krka / wine cellar',
+    img: 'uploads/dalmatian-wine-tasting.jpg',
     id: 'krka-wine-tasting', cat: 'parks', catLabel: 'National Parks',
     title: 'Krka Waterfalls with Wine Tasting',
     price: 38, duration: '8 h', departure: '08:30 / 10:30',
@@ -120,7 +120,7 @@ export const TOURS = [
     itinerary: []
   },
   {
-    imgNote: 'plitvice boardwalks',
+    img: 'uploads/plitvice-lakes.jpg',
     id: 'plitvice-lakes', cat: 'parks', catLabel: 'National Parks',
     title: 'Plitvice Lakes National Park',
     price: 65, duration: '12 h', departure: '06:45',
@@ -132,7 +132,7 @@ export const TOURS = [
     itinerary: []
   },
   {
-    imgNote: 'dubrovnik old town',
+    img: 'uploads/dubrovnik-old-town.jpg',
     id: 'dubrovnik', cat: 'cities', catLabel: 'Cities',
     title: 'Dubrovnik',
     price: 67, duration: '12 h', departure: '07:45',
@@ -144,7 +144,7 @@ export const TOURS = [
     itinerary: []
   },
   {
-    imgNote: 'mostar old bridge',
+    img: 'uploads/mostar-stari-most.jpg',
     id: 'mostar-kravice', cat: 'cities', catLabel: 'Cities',
     title: 'Mostar and Kravice Waterfalls',
     price: 70, duration: '12 h', departure: '06:45',
